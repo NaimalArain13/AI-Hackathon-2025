@@ -1,0 +1,112 @@
+[
+  {
+    "id": "R-001",
+    "city": "Islamabad",
+    "area": "G-11",
+    "budget_PKR": 13000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "high",
+    "noise_tolerance": "low",
+    "study_habits": "prefers online classes",
+    "food_pref": "Flexible"
+  },
+  {
+    "id": "R-002",
+    "city": "Karachi",
+    "area": "Gulshan-e-Iqbal",
+    "budget_PKR": 14000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "low",
+    "noise_tolerance": "medium",
+    "study_habits": "prefer Late-night study",
+    "food_pref": "Flexible"
+  },
+  {
+    "id": "R-003",
+    "city": "Faisalabad",
+    "area": "Peoples Colony",
+    "budget_PKR": 21000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "high",
+    "noise_tolerance": "high",
+    "study_habits": "Library",
+    "food_pref": "Flexible"
+  },
+  {
+    "id": "R-004",
+    "city": "Islamabad",
+    "area": "G-11",
+    "budget_PKR": 24000,
+    "sleep_schedule": "early",
+    "cleanliness": "medium",
+    "noise_tolerance": "high",
+    "study_habits": "Prefers online classes",
+    "food_pref": "Veg"
+  },
+  {
+    "id": "R-005",
+    "city": "Multan",
+    "area": "Shah Rukn-e-Alam",
+    "budget_PKR": 20000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "high",
+    "noise_tolerance": "low",
+    "study_habits": "Online classes",
+    "food_pref": "Likes to cook biryani"
+  },
+  {
+    "id": "R-006",
+    "city": "Islamabad",
+    "area": "G-11",
+    "budget_PKR": 8000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "high",
+    "noise_tolerance": "medium",
+    "study_habits": "Online classes",
+    "food_pref": "non-vegetarian"
+  },
+  {
+    "id": "R-007",
+    "city": "Multan",
+    "area": "Gulgasht Colony",
+    "budget_PKR": 9000,
+    "sleep_schedule": "flexible",
+    "cleanliness": "high",
+    "noise_tolerance": "low",
+    "study_habits": "focused student, prefers Online classes",
+    "food_pref": "Non-veg"
+  },
+  {
+    "id": "R-008",
+    "city": "Rawalpindi",
+    "area": "Chandni Chowk",
+    "budget_PKR": 13000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "low",
+    "noise_tolerance": "medium",
+    "study_habits": "prefers online classes",
+    "food_pref": "Non-veg"
+  },
+  {
+    "id": "R-009",
+    "city": "Lahore",
+    "area": "Gulberg",
+    "budget_PKR": 19000,
+    "sleep_schedule": "night_owl",
+    "cleanliness": "high",
+    "noise_tolerance": "low",
+    "study_habits": "prefers Late-night study",
+    "food_pref": "Flexible"
+  },
+  {
+    "id": "R-010",
+    "city": "Rawalpindi",
+    "area": "Satellite Town",
+    "budget_PKR": 22000,
+    "sleep_schedule": "early",
+    "cleanliness": "low",
+    "noise_tolerance": "medium",
+    "study_habits": "focused student, prefers online classes",
+    "food_pref": "Non-veg"
+  }
+]

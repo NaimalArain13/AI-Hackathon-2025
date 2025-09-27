@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 
 class ProfileSchema(BaseModel):
     id: str
@@ -11,3 +11,11 @@ class ProfileSchema(BaseModel):
     noise_tolerance: Optional[str] = None  # low | medium | high
     study_habits: Optional[str] = None
     food_pref: Optional[str] = None
+
+# ---------------- Schema ----------------
+class CompatibilityScore(BaseModel):
+    profile_1_id: str
+    profile_2_id: str
+    score: int  # 0-100
+    factors: List[str]
+    conflicts: List[str]
