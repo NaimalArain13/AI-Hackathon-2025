@@ -1,0 +1,5 @@
+python_dotenv
+openai_agents
+chainlit
+reportlab
+pdf
