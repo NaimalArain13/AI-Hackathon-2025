@@ -1,7 +1,7 @@
 import os
 import json
 import asyncio
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 from pydantic import BaseModel
 from typing import Optional
 
@@ -15,7 +15,7 @@ from agents import (
 )
 
 # ---------------- Setup ----------------
-load_dotenv(find_dotenv())
+load_dotenv()
 set_tracing_disabled(True)
 
 API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("OPENAI_API_KEY")

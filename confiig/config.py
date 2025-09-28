@@ -17,6 +17,6 @@ MODEL = OpenAIChatCompletionsModel(
     openai_client=client_provider,
 )
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-DATA_PATH = os.path.join(BASE_DIR, "data", "data.json")
-OUTPUT_PATH = os.path.join("data", "profiles_datas.json")
+# BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# DATA_PATH = os.path.join(BASE_DIR, "data", "data.json")
+# OUTPUT_PATH = os.path.join("data", "profiles_datas.json")

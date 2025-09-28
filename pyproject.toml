@@ -6,10 +6,11 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "chainlit>=2.8.1",
+    "fastapi[standard]>=0.116.2",
     "openai-agents>=0.3.2",
     "pdf2docx>=0.5.8",
     "python-docx>=1.2.0",
-    "python-dotenv>=1.1.1",
+    "python-env>=1.0.0",
     "reportlab>=4.4.4",
     "streamlit>=1.50.0",
 ]
