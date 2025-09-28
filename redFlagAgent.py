@@ -1,5 +1,5 @@
 from agents import Agent, Runner
-from connection import Model
+from confiig.config import Model
 import asyncio
 import json
 
@@ -111,5 +111,5 @@ async def run_wingman_short_advice_demo():
     print(text if isinstance(text, str) else str(text))
 
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     asyncio.run(run_wingman_short_advice_demo())
