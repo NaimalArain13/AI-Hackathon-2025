@@ -2,3 +2,6 @@ openai_agents
 chainlit
 reportlab
 pdf
+uvicorn
+pydantic
+python-dotenv

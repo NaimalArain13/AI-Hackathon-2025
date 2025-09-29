@@ -13,12 +13,10 @@ from agents import (
 )
 
 # ---------------- Setup ----------------
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(find_dotenv())
+from decouple import config
 set_tracing_disabled(True)
 
-API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("OPENAI_API_KEY")
+API_KEY = config("GEMINI_API_KEY")
 
 client_provider = AsyncOpenAI(
     api_key=API_KEY,

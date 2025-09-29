@@ -1,11 +1,33 @@
-from agents import Agent, Runner
-from confiig.config import Model
 import asyncio
 import json
+from agents import (
+    Agent,
+    Runner,
+    AsyncOpenAI,
+    OpenAIChatCompletionsModel,
+    set_tracing_disabled,
+)
+# ---------------- Setup ----------------
+from decouple import config
+set_tracing_disabled(True)
+
+API_KEY = config("GEMINI_API_KEY")
+
+client_provider = AsyncOpenAI(
+    api_key=API_KEY,
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+)
+
+MODEL = OpenAIChatCompletionsModel(
+    model="gemini-2.0-flash",
+    openai_client=client_provider,
+)
+
+
 
 wingMan = Agent(
     name="WingMan",
-    model=Model,
+    model=MODEL,
     instructions="""
 You are WingMan — a friendly and transparent roommate advisor. 
 Your role is to help students understand their compatibility report in plain, empathetic language.  
