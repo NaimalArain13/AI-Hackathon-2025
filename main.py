@@ -199,25 +199,37 @@ async def run_full_pipeline(
 async def match_profile(profile: Dict):
     """Find matching roommates from JSON file database"""
     try:
-        logger.info(f"Finding matches for profile: {profile.get('id')}")
+        logger.info("=" * 60)
+        logger.info("MATCHING FLOW STARTED")
+        logger.info(f"Input Profile ID: {profile.get('id')}")
+        logger.info(f"Input Profile: {json.dumps(profile, indent=2)}")
+        logger.info("=" * 60)
         
         # Load roommate database from JSON file
         BASE_DIR = os.path.dirname(__file__)
         DB_PATH = os.path.join(BASE_DIR, "data", "profiles.json")
         
+        logger.info(f"📂 Loading database from: {DB_PATH}")
+        
         if not os.path.exists(DB_PATH):
+            logger.error(f"❌ Database file not found at: {DB_PATH}")
             raise HTTPException(status_code=404, detail="Roommate database not found")
         
         with open(DB_PATH, "r", encoding="utf-8") as f:
             all_roommates = json.load(f)
         
-        logger.info(f"Loaded {len(all_roommates)} roommates from database")
+        logger.info(f"✅ Loaded {len(all_roommates)} roommates from database")
+        logger.info("-" * 60)
         
         # Score each roommate
+        logger.info("🎯 Starting compatibility scoring...")
         matches = []
-        for roommate in all_roommates:
+        skipped_count = 0
+        
+        for i, roommate in enumerate(all_roommates):
             # Skip if same ID (don't match with yourself)
             if roommate.get("id") == profile.get("id"):
+                skipped_count += 1
                 continue
             
             # Calculate compatibility score
@@ -225,6 +237,10 @@ async def match_profile(profile: Dict):
             
             # Detect red flags
             red_flags = detect_red_flags(profile, roommate)
+            
+            # Log every 50th profile for visibility
+            if (i + 1) % 50 == 0:
+                logger.info(f"   Processed {i + 1}/{len(all_roommates)} profiles...")
             
             matches.append({
                 "roommate_id": roommate.get("id"),
@@ -239,17 +255,39 @@ async def match_profile(profile: Dict):
                 "red_flags": red_flags
             })
         
+        logger.info(f"✅ Scored {len(matches)} candidates (skipped {skipped_count} self-matches)")
+        logger.info("-" * 60)
+        
         # Sort by score (highest first)
+        logger.info("📊 Sorting matches by compatibility score...")
         matches.sort(key=lambda x: x["score"], reverse=True)
+        
+        # Log score distribution
+        if matches:
+            top_score = matches[0]["score"]
+            avg_score = sum(m["score"] for m in matches) / len(matches)
+            logger.info(f"   Top score: {top_score}")
+            logger.info(f"   Average score: {avg_score:.1f}")
+            logger.info(f"   Matches with score >= 70: {sum(1 for m in matches if m['score'] >= 70)}")
+            logger.info(f"   Matches with score >= 50: {sum(1 for m in matches if m['score'] >= 50)}")
         
         # Take top 5 matches
         top_matches = matches[:5]
+        logger.info(f"🏆 Selected top {len(top_matches)} matches")
+        logger.info("-" * 60)
         
         # Generate simple wingman advice
+        logger.info("💬 Generating wingman advice for top matches...")
         wingman_advice = {}
-        for match in top_matches:
+        for idx, match in enumerate(top_matches):
+            logger.info(f"   Match {idx + 1}: {match['roommate_id']} (score: {match['score']}, red_flags: {match['red_flags']})")
             advice = generate_wingman_advice(profile, match)
             wingman_advice[match["roommate_id"]] = advice
+        
+        logger.info("=" * 60)
+        logger.info("MATCHING FLOW COMPLETED SUCCESSFULLY")
+        logger.info(f"Returning {len(top_matches)} matches to frontend")
+        logger.info("=" * 60)
         
         return {
             "status": "success",
